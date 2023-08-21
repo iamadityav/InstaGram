@@ -3,6 +3,7 @@ import React from 'react';
 import {DummyData} from '../Data/Dummydata';
 import {Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icons from 'react-native-vector-icons/Feather';
 import {ScrollView, FlatList} from 'react-native';
 
 const Post = () => {
@@ -42,8 +43,8 @@ const Post = () => {
                   top: 1,
                 }}
               />
-              <Ionicons
-                name="send-outline"
+              <Icons
+                name="send"
                 size={25}
                 style={(styles.icon, {marginLeft: 8, top: 2})}
               />

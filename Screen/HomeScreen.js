@@ -20,7 +20,7 @@ const HomeScreen = () => {
           <View style={styles.statusroott}>
             <Image source={item.Image} style={styles.profileimage} />
           </View>
-          <Text style={{left: 15, top: 0}}>{item.name}</Text>
+          <Text style={{left: 15, alignSelf: 'center'}}>{item.name}</Text>
         </View>
       </View>
     );
@@ -31,10 +31,18 @@ const HomeScreen = () => {
       <ScrollView>
         {/* Header and Icon */}
         <View style={styles.header}>
-          <Text style={styles.headertext}>INSTAGRAM</Text>
+          {/* <Text style={styles.headertext}>INSTAGRAM</Text> */}
+          <Image
+            source={require('../Data/images/Instagram-logo.png')}
+            style={styles.headerimage}
+          />
           <View style={styles.iconheader}>
             <Ionicons name="heart-outline" size={22} style={styles.icon} />
-            <Ionicons name="send-outline" size={22} />
+            <Ionicons
+              name="chatbubble-ellipses-outline"
+              size={22}
+              style={{right: 3}}
+            />
           </View>
         </View>
         {/* Status and profile */}
@@ -63,6 +71,11 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  headerimage: {
+    height: 30,
+    width: 110,
+    left: 10,
   },
   icon: {
     right: 8,
