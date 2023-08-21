@@ -52,9 +52,16 @@ const Post = () => {
             <Ionicons name="bookmark-outline" size={26} style={styles.icon} />
           </View>
         </View>
-        <Text style={{top: 5, fontSize: 18}}>Liked by Amlan{item.likes}</Text>
+        <Text style={{top: 5, fontSize: 18}}>
+          Liked by Amlan & {item.likes} others.
+        </Text>
         <View
-          style={{backgroundColor: '#e3e3e3', height: 1, width: '100%', top: 5}}
+          style={{
+            backgroundColor: '#e3e3e3',
+            height: 1,
+            width: '100%',
+            top: 15,
+          }}
         />
       </View>
     );
@@ -75,7 +82,7 @@ export default Post;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    marginTop: 5,
+    marginTop: 20,
   },
   post: {
     // backgroundColor: '#eeeded',
@@ -100,7 +107,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   profilenametext: {
-    top: 12,
+    top: 15,
     fontWeight: '600',
     marginLeft: 5,
   },
@@ -111,8 +118,9 @@ const styles = StyleSheet.create({
     top: 10,
   },
   postimage: {
-    width: '100%',
+    width: '99.5%',
     height: 400,
-    marginRight: 5,
+    alignSelf: 'center',
+    //marginRight: 5,
   },
 });
