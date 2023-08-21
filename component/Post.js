@@ -52,6 +52,7 @@ const Post = () => {
             <Ionicons name="bookmark-outline" size={26} style={styles.icon} />
           </View>
         </View>
+        <Text style={{top: 5, fontSize: 18}}>Liked by Amlan{item.likes}</Text>
         <View
           style={{backgroundColor: '#e3e3e3', height: 1, width: '100%', top: 5}}
         />

@@ -20,7 +20,7 @@ const HomeScreen = () => {
           <View style={styles.statusroott}>
             <Image source={item.Image} style={styles.profileimage} />
           </View>
-          <Text style={{left: 15, alignSelf: 'center'}}>{item.name}</Text>
+          <Text style={{left: 5, alignSelf: 'center'}}>{item.name}</Text>
         </View>
       </View>
     );
@@ -28,7 +28,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.root}>
-      <ScrollView>
+      <View>
         {/* Header and Icon */}
         <View style={styles.header}>
           {/* <Text style={styles.headertext}>INSTAGRAM</Text> */}
@@ -56,7 +56,7 @@ const HomeScreen = () => {
         </View>
         {/* Post and like */}
         <Post />
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
