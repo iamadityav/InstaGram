@@ -52,6 +52,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UIAppFonts</key>
+	
 <array>
   <string>AntDesign.ttf</string>
   <string>Entypo.ttf</string>

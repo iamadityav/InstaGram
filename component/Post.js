@@ -32,29 +32,36 @@ const Post = () => {
               top: 5,
             }}>
             <View style={styles.iconpress}>
-              <Ionicons name="heart-outline" size={30} style={styles.icon} />
+              <Ionicons name="heart-outline" size={25} style={styles.icon} />
               <Ionicons
                 name="chatbubble-outline"
-                size={26}
+                size={21}
                 style={{
                   ...styles.icon,
                   transform: [{rotateY: '180deg'}],
                   marginLeft: 5,
                   top: 1,
+                  left: 8,
                 }}
               />
               <Icons
                 name="send"
-                size={25}
-                style={(styles.icon, {marginLeft: 8, top: 2})}
+                size={20}
+                style={(styles.icon, {marginLeft: 8, top: 1, left: 15})}
               />
             </View>
-            <Ionicons name="bookmark-outline" size={26} style={styles.icon} />
+            <Ionicons name="bookmark-outline" size={25} style={styles.icon} />
           </View>
         </View>
-        <Text style={{top: 5, fontSize: 18}}>
-          Liked by Amlan & {item.likes} others.
-        </Text>
+        <View style={{flexDirection: 'row', top: 5}}>
+          <Image
+            source={require('../Data/images/Amlan.png')}
+            style={styles.profileimagee}
+          />
+          <Text style={{top: 5, fontSize: 18, top: 9, left: 5}}>
+            Liked by Amlan & {item.likes} others.
+          </Text>
+        </View>
         <View
           style={{
             backgroundColor: '#e3e3e3',
@@ -89,7 +96,6 @@ const styles = StyleSheet.create({
   },
   profilename: {
     flexDirection: 'row',
-    marginBottom: 5,
     justifyContent: 'space-between',
   },
   profilenamee: {
@@ -106,6 +112,16 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginLeft: 8,
   },
+  profileimagee: {
+    top: 6,
+    height: 25,
+    width: 25,
+    paddingBottom: 6,
+    marginBottom: 6,
+    paddingTop: 8,
+    borderRadius: 48,
+    marginLeft: 5,
+  },
   profilenametext: {
     top: 15,
     fontWeight: '600',
@@ -113,6 +129,7 @@ const styles = StyleSheet.create({
   },
   iconpress: {
     flexDirection: 'row',
+    left: 10,
   },
   ellipseicon: {
     top: 10,
