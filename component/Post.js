@@ -5,8 +5,19 @@ import {Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/Feather';
 import {ScrollView, FlatList} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {AddPost} from '../redux/PostSlice';
 
 const Post = () => {
+  //   const dispatch = useDispatch();
+  //   const item = useSelector(state => state.post.data); // Access the Redux state
+  //   console.log('post', item);
+  const postData = useSelector(state => state.post.data);
+  console.log('Post', postData.Image);
+  const addNewPost = newPost => {
+    dispatch(AddPost(newPost)); // Dispatch the AddPost action with the new post data
+  };
+
   const renderPost = ({item}) => {
     return (
       <View style={styles.root}>
@@ -76,7 +87,7 @@ const Post = () => {
   return (
     <View style={styles.postContainer}>
       <FlatList
-        data={DummyData}
+        data={postData}
         renderItem={renderPost}
         showsHorizontalScrollIndicator={false}
       />

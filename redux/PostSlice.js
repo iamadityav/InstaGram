@@ -1,15 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {DummyData} from '../Data/Dummydata';
 
-const initialState = DummyData;
-
 const PostSlice = createSlice({
-  name: 'data',
-  initialState,
+  name: 'post',
+  initialState: {
+    data: DummyData,
+  },
   reducers: {
     AddPost: (state, action) => {
       const {id, name, Image, Post, likes, touch} = action.payload;
-      state.push({id, name, Image, Post, likes, touch});
+      state.data.push({id, name, Image, Post, likes, touch});
     },
   },
 });

@@ -11,9 +11,12 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DummyData} from '../Data/Dummydata';
 import Post from '../component/Post';
+import {useSelector} from 'react-redux';
 
 const HomeScreen = () => {
   const [data, setData] = useState(DummyData);
+  const item = useSelector(state => state.post.data);
+  console.log('HomeScreen', item);
 
   const toggleTouch = id => {
     const updatedData = data.map(item => {
@@ -63,7 +66,7 @@ const HomeScreen = () => {
         {/* Status and profile */}
         <View>
           <FlatList
-            data={DummyData}
+            data={item}
             renderItem={renderChat}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
