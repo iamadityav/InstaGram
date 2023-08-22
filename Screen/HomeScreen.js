@@ -9,36 +9,33 @@ import {
 import {React, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {DummyData} from '../Data/Dummydata';
 import Post from '../component/Post';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {toggleTouch} from '../redux/PostSlice';
 
 const HomeScreen = () => {
-  const [data, setData] = useState(DummyData);
   const item = useSelector(state => state.post.data);
-  console.log('HomeScreen', item);
+  const dispatch = useDispatch();
 
-  const toggleTouch = id => {
-    const updatedData = data.map(item => {
-      if (item.id === id) {
-        return {...item, touch: !item.touch};
-      }
-      return item;
-    });
-    setData(updatedData);
+  const toggle = id => {
+    console.log('id', id);
+    dispatch(toggleTouch(id));
   };
 
-  const renderChat = ({item}) => {
+  const renderChat = ({item: chatItem}) => {
     return (
       <View>
         <View style={styles.statusroot}>
-          <TouchableOpacity onPress={() => toggleTouch(item.id)}>
+          <TouchableOpacity onPress={() => toggle(chatItem.id)}>
             <View
-              style={[styles.statusroott, item.touch && styles.touchedStatus]}>
-              <Image source={item.Image} style={styles.profileimage} />
+              style={[
+                styles.statusroott,
+                chatItem.touch && styles.touchedStatus,
+              ]}>
+              <Image source={chatItem.Post} style={styles.profileimage} />
             </View>
           </TouchableOpacity>
-          <Text style={{left: 5, alignSelf: 'center'}}>{item.name}</Text>
+          <Text style={{left: 5, alignSelf: 'center'}}>{chatItem.name}</Text>
         </View>
       </View>
     );
@@ -54,14 +51,16 @@ const HomeScreen = () => {
             source={require('../Data/images/Instagram-logo.png')}
             style={styles.headerimage}
           />
-          <View style={styles.iconheader}>
-            <Ionicons name="heart-outline" size={22} style={styles.icon} />
-            <Ionicons
-              name="chatbubble-ellipses-outline"
-              size={22}
-              style={{right: 3}}
-            />
-          </View>
+          <TouchableOpacity>
+            <View style={styles.iconheader}>
+              <Ionicons name="heart-outline" size={22} style={styles.icon} />
+              <Ionicons
+                name="chatbubble-ellipses-outline"
+                size={22}
+                style={{right: 3}}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
         {/* Status and profile */}
         <View>
@@ -109,14 +108,14 @@ const styles = StyleSheet.create({
   statusroott: {
     width: 85,
     height: 85,
-    borderRadius: 55, // Make it half the width and height to create a circle
-    backgroundColor: '#da5555', // You can set a background color if needed
+    borderRadius: 55,
+    backgroundColor: '#da5555',
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 8,
   },
   touchedStatus: {
-    backgroundColor: '#ffffff', // Change background color when touch is true
+    backgroundColor: '#ffffff',
   },
   profileimage: {
     top: 4,
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     //marginLeft: 8,
   },
   postContainer: {
-    backgroundColor: '#a79494',
+    backgroundColor: '#ffffff',
     height: '70%',
   },
 });

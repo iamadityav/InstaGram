@@ -1,21 +1,23 @@
-import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {React, useState} from 'react';
 import {DummyData} from '../Data/Dummydata';
 import {Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/Feather';
 import {ScrollView, FlatList} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {AddPost} from '../redux/PostSlice';
+import {AddPost, setLike, setBookmark} from '../redux/PostSlice';
 
 const Post = () => {
-  //   const dispatch = useDispatch();
-  //   const item = useSelector(state => state.post.data); // Access the Redux state
-  //   console.log('post', item);
   const postData = useSelector(state => state.post.data);
-  console.log('Post', postData.Image);
-  const addNewPost = newPost => {
-    dispatch(AddPost(newPost)); // Dispatch the AddPost action with the new post data
+  const dispatch = useDispatch();
+
+  const onPressHandler = postId => {
+    dispatch(setLike(postId));
+  };
+
+  const onBookmark = postId => {
+    dispatch(setBookmark(postId));
   };
 
   const renderPost = ({item}) => {
@@ -43,7 +45,16 @@ const Post = () => {
               top: 5,
             }}>
             <View style={styles.iconpress}>
-              <Ionicons name="heart-outline" size={25} style={styles.icon} />
+              <TouchableOpacity onPress={() => onPressHandler(item.id)}>
+                <Ionicons
+                  name={item.isLiked ? 'heart' : 'heart-outline'}
+                  size={25}
+                  style={[
+                    styles.icon,
+                    item.isLiked ? styles.coloredIcon : null,
+                  ]}
+                />
+              </TouchableOpacity>
               <Ionicons
                 name="chatbubble-outline"
                 size={21}
@@ -61,7 +72,16 @@ const Post = () => {
                 style={(styles.icon, {marginLeft: 8, top: 1, left: 15})}
               />
             </View>
-            <Ionicons name="bookmark-outline" size={25} style={styles.icon} />
+            <TouchableOpacity onPress={onBookmark}>
+              {/* <Ionicons
+                name="bookmark-outline"
+                size={25}
+                style={[
+                  styles.icon,
+                  item.isBookmarked ? styles.bookmarkcIon : null,
+                ]}
+              /> */}
+            </TouchableOpacity>
           </View>
         </View>
         <View style={{flexDirection: 'row', top: 5}}>
@@ -112,6 +132,12 @@ const styles = StyleSheet.create({
   profilenamee: {
     flexDirection: 'row',
     marginBottom: 5,
+  },
+  coloredIcon: {
+    color: '#ff0000',
+  },
+  bookmarkcIon: {
+    color: '#8c8c8c',
   },
   profileimage: {
     top: 6,

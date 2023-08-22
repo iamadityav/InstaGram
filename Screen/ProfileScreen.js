@@ -1,16 +1,30 @@
-import {View, Text} from 'react-native';
+import {View, FlatList, Image, Text} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const ProfileScreen = () => {
-  const postData = useSelector(state => state.post.data); // Access the 'data' array from the Redux state
-  console.log('Profile', postData.Image);
+  const postData = useSelector(state => state.post.data);
+  console.log('Profile', postData);
+
+  const RenderPost = ({item, id}) => {
+    console.log('RenderPost', item.Image);
+
+    return (
+      <SafeAreaView>
+        <Text>{item.name}</Text>
+        {/* <Image source={{uri: item.Image}} style={{width: 100, height: 100}} /> */}
+      </SafeAreaView>
+    );
+  };
 
   return (
     <View>
-      {postData.map(item => (
-        <Text key={item.id}>{item.name}</Text> // Render each name in a Text component
-      ))}
+      <FlatList
+        data={postData}
+        renderItem={RenderPost}
+        keyExtractor={item => item.id.toString()}
+      />
     </View>
   );
 };

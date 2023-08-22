@@ -16,7 +16,6 @@ const AddPostScreen = () => {
       } else if (response.error) {
         console.log('Camera error:', response.error);
       } else {
-        // Here you can access the selected image using response.uri
         console.log('Selected image:', response.uri);
       }
     });

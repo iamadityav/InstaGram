@@ -6,20 +6,28 @@ export const DummyData = [
     Post: require('../Data/images/Aditya.jpeg'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
   {
     id: 2,
     name: 'Shubham',
     Image: require('../Data/images/Shubham.png'),
+    Post: require('../Data/images/Shubham.png'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
   {
     id: 3,
     name: 'Amlan',
     Image: require('../Data/images/Amlan.png'),
+    Post: require('../Data/images/Amlan.png'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
   {
     id: 4,
@@ -28,6 +36,8 @@ export const DummyData = [
     Post: require('../Data/images/Prakhar.png'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
   {
     id: 5,
@@ -36,6 +46,8 @@ export const DummyData = [
     Post: require('../Data/images/Adyasar.png'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
   {
     id: 6,
@@ -44,6 +56,8 @@ export const DummyData = [
     Post: require('../Data/images/Rishab.png'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
   {
     id: 7,
@@ -52,6 +66,8 @@ export const DummyData = [
     Post: require('../Data/images/Pratiskha.png'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
   {
     id: 8,
@@ -60,6 +76,8 @@ export const DummyData = [
     Post: require('../Data/images/Preeti.png'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
   {
     id: 9,
@@ -68,5 +86,7 @@ export const DummyData = [
     Post: require('../Data/images/Gauri.png'),
     likes: 256,
     touch: false,
+    isLiked: false,
+    isBookmarked: false,
   },
 ];
