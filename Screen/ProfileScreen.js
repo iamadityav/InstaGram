@@ -5,8 +5,9 @@ import {
   FlatList,
   StyleSheet,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import {React, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/FontAwesome';
@@ -14,17 +15,26 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import OctIcon from 'react-native-vector-icons/Octicons';
 import NewIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector} from 'react-redux';
+import Modal from 'react-native-modal';
 import StoryHighlight from '../component/StoryHighlight';
 import ProfilePost from '../component/ProfilePost';
 
 const ProfileScreen = () => {
   const data = useSelector(state => state.post.data);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   console.log('ProfileScreen', data);
 
-  const renderChat = ({item}) => {
-    <View style={styles.highlightcard}>
-      <Text>{item.name}</Text>
-    </View>;
+  const toggle = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
+  // const renderChat = ({item}) => {
+  //   <View style={styles.highlightcard}>
+  //     <Text>{item.name}</Text>
+  //   </View>;
+  // };
+  const onPressarrow = () => {
+    toggle();
   };
   return (
     <SafeAreaView>
@@ -37,11 +47,13 @@ const ProfileScreen = () => {
             style={styles.lockicon}
           />
           <Text style={styles.username}>iamadityav</Text>
-          <Icon
-            name="arrow-down"
-            size={13}
-            style={[styles.plusicon, {marginTop: 5, left: 5}]}
-          />
+          <TouchableOpacity onPress={onPressarrow}>
+            <Icon
+              name="arrow-down"
+              size={13}
+              style={[styles.plusicon, {marginTop: 5, left: 5}]}
+            />
+          </TouchableOpacity>
         </View>
         <View style={{flexDirection: 'row', right: 10}}>
           <Icons name="plus-square-o" size={22} style={styles.plusicon} />
@@ -149,6 +161,9 @@ const ProfileScreen = () => {
         <StoryHighlight />
         <StoryHighlight />
         <StoryHighlight />
+        <StoryHighlight />
+        <StoryHighlight />
+        <StoryHighlight />
       </ScrollView>
       {/* <View
         style={{
@@ -180,6 +195,10 @@ const ProfileScreen = () => {
       <View style={{height: 320, backgroundColor: '#e4e4e4'}}>
         <ProfilePost />
       </View>
+      {/* Bottom Half Modal */}
+      <Modal isVisible={isModalVisible} onBackdropPress={toggle}>
+        <View style={styles.modalContent}></View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -213,5 +232,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     left: 8,
     marginTop: 20,
+  },
+  modalContent: {
+    justifyContent: 'flex-end',
+    margin: 0,
   },
 });

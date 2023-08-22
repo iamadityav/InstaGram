@@ -106,9 +106,9 @@ const styles = StyleSheet.create({
     left: 5,
   },
   statusroott: {
-    width: 85,
-    height: 85,
-    borderRadius: 55,
+    width: 84,
+    height: 84,
+    borderRadius: 54,
     backgroundColor: '#da5555',
     justifyContent: 'center',
     alignItems: 'center',
