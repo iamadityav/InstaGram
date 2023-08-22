@@ -3,7 +3,7 @@ export const PostData = [
     id: 1,
     post: {
       PostId: 1,
-      postImage: require('../Data/images/Aditya.jpeg'),
+      postImage: require('../Data/images/PostImage1.jpg'),
       likes: 100,
       isLiked: true,
       isBookmarked: false,
@@ -18,7 +18,7 @@ export const PostData = [
   {
     id: 2,
     post: {
-      postImage: require('../Data/images/Shubham.png'),
+      postImage: require('../Data/images/PostImage2.jpg'),
       likes: 132,
       isLiked: false,
       isBookmarked: false,
@@ -33,7 +33,7 @@ export const PostData = [
   {
     id: 3,
     post: {
-      postImage: require('../Data/images/Amlan.png'),
+      postImage: require('../Data/images/PostImage3.jpg'),
       likes: 354,
       isLiked: false,
       isBookmarked: false,
@@ -48,7 +48,7 @@ export const PostData = [
   {
     id: 4,
     post: {
-      postImage: require('../Data/images/Prakhar.png'),
+      postImage: require('../Data/images/PostImage4.jpg'),
       likes: 523,
       isLiked: false,
       isBookmarked: false,
