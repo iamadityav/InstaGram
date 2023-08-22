@@ -4,13 +4,15 @@ import {DummyData} from '../Data/Dummydata';
 import {Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/Feather';
-import {ScrollView, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {AddPost, setLike, setBookmark} from '../redux/PostSlice';
+import {setLike} from '../redux/PostSlice';
+import {setBookmark} from '../redux/PostSlice';
 
 const Post = () => {
   const postData = useSelector(state => state.post.data);
   const dispatch = useDispatch();
+  console.log('data', postData);
 
   const onPressHandler = postId => {
     dispatch(setLike(postId));
@@ -36,7 +38,7 @@ const Post = () => {
             />
           </View>
           <View>
-            <Image source={item.Image} style={styles.postimage} />
+            <Image source={item.Post} style={styles.postimage} />
           </View>
           <View
             style={{
@@ -72,15 +74,15 @@ const Post = () => {
                 style={(styles.icon, {marginLeft: 8, top: 1, left: 15})}
               />
             </View>
-            <TouchableOpacity onPress={onBookmark}>
-              {/* <Ionicons
-                name="bookmark-outline"
+            <TouchableOpacity onPress={() => onBookmark(item.id)}>
+              <Ionicons
+                name={item.isBookmarked ? 'bookmark' : 'bookmark-outline'}
                 size={25}
                 style={[
                   styles.icon,
                   item.isBookmarked ? styles.bookmarkcIon : null,
                 ]}
-              /> */}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -132,22 +134,29 @@ const styles = StyleSheet.create({
   profilenamee: {
     flexDirection: 'row',
     marginBottom: 5,
+    width: 33,
+    height: 33,
+    borderRadius: 53,
+    backgroundColor: '#da5555',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    marginLeft: 8,
   },
   coloredIcon: {
     color: '#ff0000',
   },
   bookmarkcIon: {
-    color: '#8c8c8c',
+    color: '#252525',
   },
   profileimage: {
-    top: 6,
+    top: 1.5,
     height: 30,
     width: 30,
     paddingBottom: 8,
     marginBottom: 8,
     paddingTop: 10,
     borderRadius: 50,
-    marginLeft: 8,
+    marginLeft: 1.5,
   },
   profileimagee: {
     top: 6,
@@ -160,9 +169,10 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   profilenametext: {
-    top: 15,
+    top: 10,
     fontWeight: '600',
     marginLeft: 5,
+    width: '200%',
   },
   iconpress: {
     flexDirection: 'row',

@@ -18,13 +18,13 @@ const PostSlice = createSlice({
     },
     setLike: (state, action) => {
       const postIndex = state.data.findIndex(item => item.id == action.payload);
-      state.data[postIndex].isLiked = true;
-      // console.log('postindex', state.data[postIndex].isLiked);
+      state.data[postIndex].isLiked = !state.data[postIndex].isLiked;
+      console.log('postindex', state.data[postIndex].isLiked);
     },
     setBookmark: (state, action) => {
-      const Index = state.data.findIndex(item => item.id == action.payload);
-      state.data[Index].isBookmarked = true;
-      console.log('Index', state.data[Index].isBookmarked);
+      const postIndex = state.data.findIndex(item => item.id == action.payload);
+      state.data[postIndex].isBookmarked = !state.data[postIndex].isBookmarked;
+      console.log('Index', state.data[postIndex].isBookmarked);
     },
   },
 });

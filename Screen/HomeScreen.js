@@ -32,7 +32,7 @@ const HomeScreen = () => {
                 styles.statusroott,
                 chatItem.touch && styles.touchedStatus,
               ]}>
-              <Image source={chatItem.Post} style={styles.profileimage} />
+              <Image source={chatItem.Image} style={styles.profileimage} />
             </View>
           </TouchableOpacity>
           <Text style={{left: 5, alignSelf: 'center'}}>{chatItem.name}</Text>
