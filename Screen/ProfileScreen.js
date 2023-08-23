@@ -27,6 +27,11 @@ const ProfileScreen = () => {
   const data = useSelector(state => state.post.data);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isburgerModalVisible, setIsburgerModalVisible] = useState(false);
+  const [tabNo, setTabno] = useState(1);
+
+  const TabRenderHandler = tabNo => {
+    setTabno(tabNo);
+  };
   console.log('ProfileScreen', data);
 
   const toggle = () => {
@@ -41,6 +46,7 @@ const ProfileScreen = () => {
   const onPressarrow = () => {
     toggle();
   };
+
   return (
     <SafeAreaView>
       {/* Header Section */}
@@ -171,16 +177,43 @@ const ProfileScreen = () => {
         }}>
         <StoryHighlight />
       </ScrollView>
-      <View
-        style={{
-          height: 30,
-          width: '100%',
-          justifyContent: 'space-evenly',
-          flexDirection: 'row',
-        }}>
-        <NewIcon name="grid" size={25} style={{right: 40, top: 2}} />
-        <OctIcon name="video" size={25} style={{top: 2}} />
-        <NewIcon name="contacts-outline" size={25} style={{left: 33, top: 2}} />
+      <View style={styles.postHeaderRootContainer}>
+        <TouchableOpacity
+          style={styles.touchContainer}
+          onPress={() => TabRenderHandler(1)}>
+          <View
+            style={
+              tabNo === 1
+                ? styles.innerActiveContainer
+                : styles.innerInActiveContainer
+            }>
+            <NewIcon name="grid" size={25} />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.touchContainer}
+          onPress={() => TabRenderHandler(2)}>
+          <View
+            style={
+              tabNo === 2
+                ? styles.innerActiveContainer
+                : styles.innerInActiveContainer
+            }>
+            <OctIcon name="video" size={25} />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.touchContainer}
+          onPress={() => TabRenderHandler(3)}>
+          <View
+            style={
+              tabNo === 3
+                ? styles.innerActiveContainer
+                : styles.innerInActiveContainer
+            }>
+            <NewIcon name="contacts-outline" size={25} />
+          </View>
+        </TouchableOpacity>
       </View>
       <View
         style={{
@@ -246,5 +279,32 @@ const styles = StyleSheet.create({
   view: {
     justifyContent: 'flex-end',
     margin: 0,
+  },
+
+  //post container
+  postHeaderRootContainer: {
+    height: 40,
+    width: '100%',
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+  },
+  touchContainer: {
+    // backgroundColor: '#adadad',
+    width: '33%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  innerActiveContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 2,
+    paddingVertical: 5,
+  },
+  innerInActiveContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 5,
   },
 });

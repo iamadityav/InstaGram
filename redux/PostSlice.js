@@ -5,8 +5,12 @@ const PostSlice = createSlice({
   name: 'post',
   initialState: {
     data: DummyData,
+    selectedItem: null,
   },
   reducers: {
+    setSelectedPost: (state, action) => {
+      state.selectedItem = action.payload;
+    },
     AddPost: (state, action) => {
       const {id, name, Image, Post, likes, touch} = action.payload;
       state.data.push({id, name, Image, Post, likes, touch});
@@ -34,6 +38,7 @@ const PostSlice = createSlice({
   },
 });
 
-export const {AddPost, toggleTouch, setLike, setBookmark} = PostSlice.actions;
+export const {AddPost, toggleTouch, setLike, setBookmark, setSelectedPost} =
+  PostSlice.actions;
 
 export default PostSlice.reducer;

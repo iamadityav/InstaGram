@@ -127,3 +127,18 @@ const styles = StyleSheet.create({
     height: '70%',
   },
 });
+
+// {selectedItem && (
+//   <View style={styles.selectedPostContainer}>
+//     <Image source={selectedItem.Post} style={styles.selectedPostImage} />
+//     {/* You can display post details here */}
+// <View>
+//<FlatList
+//  data={item}
+//  renderItem={renderChat}
+//  horizontal={true}
+// showsHorizontalScrollIndicator={false}
+///>
+//</View>
+//   </View>
+// )}

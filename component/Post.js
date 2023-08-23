@@ -9,7 +9,8 @@ import {setLike} from '../redux/PostSlice';
 import {setBookmark} from '../redux/PostSlice';
 import {toggleTouch} from '../redux/PostSlice';
 import {SafeAreaView} from 'react-native';
-import {Modal} from 'react-native';
+import Modal from 'react-native-modal';
+import EllipseModal from './EllipseModal';
 
 const Post = () => {
   const [isModalVisible, setModalVisble] = useState(false);
@@ -148,11 +149,14 @@ const Post = () => {
           showsHorizontalScrollIndicator={false}
         />
       </View>
-      {/* <Modal
+      <Modal
         swipeDirection={['down']}
         isVisible={isModalVisible}
         onBackdropPress={toggleburger}
-        style={styles.view}></Modal> */}
+        style={styles.modalview}
+        testID={'modal'}>
+        <EllipseModal />
+      </Modal>
     </>
   );
 };
