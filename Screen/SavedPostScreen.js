@@ -6,6 +6,7 @@ import SavedPost from '../component/SavedPost';
 const SavedPostScreen = () => {
   return (
     <View style={{backgroundColor: '#ffffff'}}>
+      {/* <ProfilePost /> */}
       <SavedPost />
     </View>
   );

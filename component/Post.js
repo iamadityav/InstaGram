@@ -44,16 +44,18 @@ const Post = () => {
         <View style={styles.root}></View>
         <View style={styles.post}>
           <View style={styles.profilename}>
-            <TouchableOpacity onPress={() => toggletouch(item.id)}>
-              <View
-                style={[
-                  styles.profilenamee,
-                  item.touch && styles.touchedStatus,
-                ]}>
-                <Image source={item.Image} style={styles.profileimage} />
-              </View>
-            </TouchableOpacity>
-            <Text style={styles.profilenametext}>{item.name}</Text>
+            <View>
+              <TouchableOpacity onPress={() => toggletouch(item.id)}>
+                <View
+                  style={[
+                    styles.profilenamee,
+                    item.touch && styles.touchedStatus,
+                  ]}>
+                  <Image source={item.Image} style={styles.profileimage} />
+                  <Text style={styles.profilenametext}>{item.name}</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity onPress={toggle}>
               <Ionicons
                 name="ellipsis-vertical"
@@ -209,7 +211,7 @@ const styles = StyleSheet.create({
     left: 10,
   },
   ellipseicon: {
-    top: 10,
+    marginTop: 10,
   },
   postimage: {
     width: '99.5%',
