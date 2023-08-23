@@ -4,22 +4,8 @@ import Materialicon from 'react-native-vector-icons/MaterialIcons';
 
 const ModalScreen = () => {
   return (
-    <View
-      style={{
-        height: 230,
-        width: '100%',
-        backgroundColor: '#ffffff',
-      }}>
-      <View
-        style={{
-          backgroundColor: '#000000',
-          width: 40,
-          height: 6,
-          marginTop: 10,
-          alignSelf: 'center',
-          borderRadius: 10,
-        }}
-      />
+    <View style={styles.root}>
+      <View style={styles.hardline} />
       <View
         style={{
           backgroundColor: '#8e8e8e',
@@ -81,5 +67,18 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 10,
     borderRadius: 50,
+  },
+  root: {
+    height: 230,
+    width: '100%',
+    backgroundColor: '#ffffff',
+  },
+  hardline: {
+    backgroundColor: '#000000',
+    width: 40,
+    height: 6,
+    marginTop: 10,
+    alignSelf: 'center',
+    borderRadius: 10,
   },
 });

@@ -3,8 +3,16 @@ import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import Octicons from 'react-native-vector-icons/Octicons';
+import {useNavigation} from '@react-navigation/native';
+import SavedPostScreen from '../Screen/SavedPostScreen';
 
-const HamburgerModal = () => {
+const HamburgerModal = ({toggleburger}) => {
+  const navigation = useNavigation();
+  const onPressHandler = () => {
+    toggleburger();
+    navigation.navigate('SavedPostScreen');
+  };
+
   return (
     <View style={{height: 500, backgroundColor: '#ffffff'}}>
       <View
@@ -78,10 +86,14 @@ const HamburgerModal = () => {
           marginTop: 10,
         }}
       />
-      <View style={{flexDirection: 'row', marginTop: 10, marginLeft: 10}}>
-        <Ionicons name="bookmark-outline" size={22} style={styles.icon} />
-        <Text style={{fontSize: 15, marginLeft: 10, marginTop: 2}}>Saved</Text>
-      </View>
+      <TouchableOpacity onPress={onPressHandler}>
+        <View style={{flexDirection: 'row', marginTop: 10, marginLeft: 10}}>
+          <Ionicons name="bookmark-outline" size={22} style={styles.icon} />
+          <Text style={{fontSize: 15, marginLeft: 10, marginTop: 2}}>
+            Saved
+          </Text>
+        </View>
+      </TouchableOpacity>
       {/* Supervision */}
       <View
         style={{

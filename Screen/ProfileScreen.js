@@ -20,8 +20,10 @@ import ProfilePost from '../component/ProfilePost';
 import ModalScreen from '../component/ModalScreen';
 import EllipseModal from '../component/EllipseModal';
 import HamburgerModal from '../component/HamburgerModal';
+import {useNavigation} from '@react-navigation/native';
 
 const ProfileScreen = () => {
+  const navigation = useNavigation();
   const data = useSelector(state => state.post.data);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isburgerModalVisible, setIsburgerModalVisible] = useState(false);
@@ -84,23 +86,23 @@ const ProfileScreen = () => {
             alignItems: 'center',
           }}>
           {/* Post */}
-          <View style={{right: 45}}>
-            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 23}}>
+          <View style={{right: 45, marginTop: 2}}>
+            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 22}}>
               3
             </Text>
             <Text>Posts</Text>
           </View>
           {/* Followers */}
-          <View style={{right: 23, marginTop: 1.5}}>
-            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 23}}>
-              931
+          <View style={{right: 23, marginTop: 3}}>
+            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 21}}>
+              930
             </Text>
             <Text>Followers</Text>
           </View>
           {/* Following */}
-          <View style={{marginTop: 1.5}}>
-            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 23}}>
-              805
+          <View style={{marginTop: 3}}>
+            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 21}}>
+              804
             </Text>
             <Text>Following</Text>
           </View>
@@ -205,7 +207,7 @@ const ProfileScreen = () => {
         isVisible={isburgerModalVisible}
         onBackdropPress={toggleburger}
         style={styles.view}>
-        <HamburgerModal />
+        <HamburgerModal toggleburger={toggleburger} />
       </Modal>
     </SafeAreaView>
   );
