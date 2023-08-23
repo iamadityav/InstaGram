@@ -7,8 +7,11 @@ const ProfilePost = () => {
 
   const renderChat = ({item}) => (
     <View style={{padding: 0.5}}>
-      {console.log('Post Profile', item.Image)}
-      <Image source={item.Post} style={{height: 150, width: 130}} />
+      {/* {console.log('Post Profile', item.Image)}
+          <Image source={item.Post} style={{ height: 150, width: 130 }} /> */}
+      {item.name == 'Aditya' && (
+        <Image source={item.Post} style={{height: 150, width: 130}} />
+      )}
     </View>
   );
 

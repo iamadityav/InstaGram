@@ -80,9 +80,6 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-  },
   statusroot: {},
   header: {
     flexDirection: 'row',

@@ -3,17 +3,18 @@ import {React, useState} from 'react';
 import {Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/Feather';
-import {FlatList, Modal} from 'react-native';
+import {FlatList} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {setLike} from '../redux/PostSlice';
 import {setBookmark} from '../redux/PostSlice';
-import EllipseModal from '../component/EllipseModal';
 import {toggleTouch} from '../redux/PostSlice';
+import {SafeAreaView} from 'react-native';
+import {Modal} from 'react-native';
 
 const Post = () => {
+  const [isModalVisible, setModalVisble] = useState(false);
   const postData = useSelector(state => state.post.data);
   const dispatch = useDispatch();
-  const [isModalVisible, setIsModalVisible] = useState(false);
   console.log('data', postData);
 
   const onPressHandler = postId => {
@@ -24,112 +25,117 @@ const Post = () => {
     dispatch(setBookmark(postId));
   };
 
-  const toggle = () => {
-    console.log(isModalVisible);
-    setIsModalVisible(!isModalVisible);
-  };
-
-  const onPressarrow = () => {
-    toggle();
-  };
-
   const toggletouch = id => {
     console.log('id', id);
     dispatch(toggleTouch(id));
   };
 
+  const toggleburger = () => {
+    setModalVisble(!isModalVisible);
+  };
+
+  const openModal = () => {
+    toggleburger();
+  };
+
   const renderPost = ({item}) => {
     return (
       <>
-        <View style={styles.root}></View>
-        <View style={styles.post}>
-          <View style={styles.profilename}>
-            <View>
-              <TouchableOpacity onPress={() => toggletouch(item.id)}>
-                <View
-                  style={[
-                    styles.profilenamee,
-                    item.touch && styles.touchedStatus,
-                  ]}>
-                  <Image source={item.Image} style={styles.profileimage} />
-                  <Text style={styles.profilenametext}>{item.name}</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity onPress={toggle}>
-              <Ionicons
+        <SafeAreaView style={styles.root}>
+          <View style={styles.post}>
+            <View style={styles.profilename}>
+              <View>
+                <TouchableOpacity onPress={() => toggletouch(item.id)}>
+                  <View
+                    style={[
+                      styles.profilenamee,
+                      item.touch && styles.touchedStatus,
+                    ]}>
+                    <Image source={item.Image} style={styles.profileimage} />
+                    <Text style={styles.profilenametext}>{item.name}</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              {/* <Ionicons
                 name="ellipsis-vertical"
                 size={22}
                 style={styles.ellipseicon}
-              />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <Image source={item.Post} style={styles.postimage} />
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              top: 5,
-            }}>
-            <View style={styles.iconpress}>
-              <TouchableOpacity onPress={() => onPressHandler(item.id)}>
+              /> */}
+              <TouchableOpacity onPress={openModal}>
                 <Ionicons
-                  name={item.isLiked ? 'heart' : 'heart-outline'}
+                  name="ellipsis-vertical"
+                  size={22}
+                  style={styles.ellipseicon}
+                />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <Image source={item.Post} style={styles.postimage} />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                top: 5,
+              }}>
+              <View style={styles.iconpress}>
+                <TouchableOpacity onPress={() => onPressHandler(item.id)}>
+                  <Ionicons
+                    name={item.isLiked ? 'heart' : 'heart-outline'}
+                    size={25}
+                    style={[
+                      styles.icon,
+                      item.isLiked ? styles.coloredIcon : null,
+                    ]}
+                  />
+                </TouchableOpacity>
+                <Ionicons
+                  name="chatbubble-outline"
+                  size={21}
+                  style={{
+                    ...styles.icon,
+                    transform: [{rotateY: '180deg'}],
+                    marginLeft: 5,
+                    top: 1,
+                    left: 8,
+                  }}
+                />
+                <Icons
+                  name="send"
+                  size={20}
+                  style={(styles.icon, {marginLeft: 8, top: 1, left: 15})}
+                />
+              </View>
+              <TouchableOpacity onPress={() => onBookmark(item.id)}>
+                <Ionicons
+                  name={item.isBookmarked ? 'bookmark' : 'bookmark-outline'}
                   size={25}
                   style={[
                     styles.icon,
-                    item.isLiked ? styles.coloredIcon : null,
+                    item.isBookmarked ? styles.bookmarkcIon : null,
                   ]}
                 />
               </TouchableOpacity>
-              <Ionicons
-                name="chatbubble-outline"
-                size={21}
-                style={{
-                  ...styles.icon,
-                  transform: [{rotateY: '180deg'}],
-                  marginLeft: 5,
-                  top: 1,
-                  left: 8,
-                }}
-              />
-              <Icons
-                name="send"
-                size={20}
-                style={(styles.icon, {marginLeft: 8, top: 1, left: 15})}
-              />
             </View>
-            <TouchableOpacity onPress={() => onBookmark(item.id)}>
-              <Ionicons
-                name={item.isBookmarked ? 'bookmark' : 'bookmark-outline'}
-                size={25}
-                style={[
-                  styles.icon,
-                  item.isBookmarked ? styles.bookmarkcIon : null,
-                ]}
-              />
-            </TouchableOpacity>
           </View>
-        </View>
-        <View style={{flexDirection: 'row', top: 5}}>
-          <Image
-            source={require('../Data/images/Amlan.png')}
-            style={styles.profileimagee}
+          <View style={{flexDirection: 'row', top: 5}}>
+            <Image
+              source={require('../Data/images/Amlan.png')}
+              style={styles.profileimagee}
+            />
+            <Text style={{top: 5, fontSize: 18, top: 9, left: 5}}>
+              Liked by Amlan & {item.likes} others.
+            </Text>
+          </View>
+          <View
+            style={{
+              backgroundColor: '#e3e3e3',
+              height: 1,
+              width: '100%',
+              top: 15,
+            }}
           />
-          <Text style={{top: 5, fontSize: 18, top: 9, left: 5}}>
-            Liked by Amlan & {item.likes} others.
-          </Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: '#e3e3e3',
-            height: 1,
-            width: '100%',
-            top: 15,
-          }}
-        />
+        </SafeAreaView>
       </>
     );
   };
@@ -143,13 +149,10 @@ const Post = () => {
         />
       </View>
       {/* <Modal
+        swipeDirection={['down']}
         isVisible={isModalVisible}
-        onBackdropPress={toggle}
-        style={styles.modalview}>
-        <View style={{height: 30}}>
-          <EllipseModal />
-        </View>
-      </Modal> */}
+        onBackdropPress={toggleburger}
+        style={styles.view}></Modal> */}
     </>
   );
 };
