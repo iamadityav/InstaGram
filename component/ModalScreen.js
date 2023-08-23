@@ -1,4 +1,4 @@
-import {View, Image, Text, StyleSheet} from 'react-native';
+import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Materialicon from 'react-native-vector-icons/MaterialIcons';
 
@@ -61,7 +61,12 @@ const ModalScreen = () => {
           marginTop: 20,
           borderRadius: 20,
         }}>
-        <Text style={{color: '#ffffff', fontWeight: '700'}}>Add Account</Text>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('AddAccount');
+          }}>
+          <Text style={{color: '#ffffff', fontWeight: '700'}}>Add Account</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

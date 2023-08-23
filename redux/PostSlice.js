@@ -19,6 +19,11 @@ const PostSlice = createSlice({
     setLike: (state, action) => {
       const postIndex = state.data.findIndex(item => item.id == action.payload);
       state.data[postIndex].isLiked = !state.data[postIndex].isLiked;
+      {
+        state.data[postIndex].isLiked
+          ? state.data[postIndex].likes++
+          : state.data[postIndex].likes--;
+      }
       console.log('postindex', state.data[postIndex].isLiked);
     },
     setBookmark: (state, action) => {

@@ -21,6 +21,7 @@ const App = () => {
         <Tab.Navigator
           screenOptions={() => ({
             tabBarShowLabel: false,
+            tabBarActiveTintColor: '#000000',
           })}>
           <Tab.Screen
             name="HomeScreen"

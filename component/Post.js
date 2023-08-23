@@ -1,17 +1,19 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {React, useState} from 'react';
-import {DummyData} from '../Data/Dummydata';
 import {Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/Feather';
-import {FlatList} from 'react-native';
+import {FlatList, Modal} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {setLike} from '../redux/PostSlice';
 import {setBookmark} from '../redux/PostSlice';
+import EllipseModal from '../component/EllipseModal';
+import {toggleTouch} from '../redux/PostSlice';
 
 const Post = () => {
   const postData = useSelector(state => state.post.data);
   const dispatch = useDispatch();
+  const [isModalVisible, setIsModalVisible] = useState(false);
   console.log('data', postData);
 
   const onPressHandler = postId => {
@@ -22,20 +24,43 @@ const Post = () => {
     dispatch(setBookmark(postId));
   };
 
+  const toggle = () => {
+    console.log(isModalVisible);
+    setIsModalVisible(!isModalVisible);
+  };
+
+  const onPressarrow = () => {
+    toggle();
+  };
+
+  const toggletouch = id => {
+    console.log('id', id);
+    dispatch(toggleTouch(id));
+  };
+
   const renderPost = ({item}) => {
     return (
-      <View style={styles.root}>
+      <>
+        <View style={styles.root}></View>
         <View style={styles.post}>
           <View style={styles.profilename}>
-            <View style={styles.profilenamee}>
-              <Image source={item.Image} style={styles.profileimage} />
-              <Text style={styles.profilenametext}>{item.name}</Text>
-            </View>
-            <Ionicons
-              name="ellipsis-vertical"
-              size={22}
-              style={styles.ellipseicon}
-            />
+            <TouchableOpacity onPress={() => toggletouch(item.id)}>
+              <View
+                style={[
+                  styles.profilenamee,
+                  item.touch && styles.touchedStatus,
+                ]}>
+                <Image source={item.Image} style={styles.profileimage} />
+              </View>
+            </TouchableOpacity>
+            <Text style={styles.profilenametext}>{item.name}</Text>
+            <TouchableOpacity onPress={toggle}>
+              <Ionicons
+                name="ellipsis-vertical"
+                size={22}
+                style={styles.ellipseicon}
+              />
+            </TouchableOpacity>
           </View>
           <View>
             <Image source={item.Post} style={styles.postimage} />
@@ -103,17 +128,27 @@ const Post = () => {
             top: 15,
           }}
         />
-      </View>
+      </>
     );
   };
   return (
-    <View style={styles.postContainer}>
-      <FlatList
-        data={postData}
-        renderItem={renderPost}
-        showsHorizontalScrollIndicator={false}
-      />
-    </View>
+    <>
+      <View style={styles.postContainer}>
+        <FlatList
+          data={postData}
+          renderItem={renderPost}
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
+      {/* <Modal
+        isVisible={isModalVisible}
+        onBackdropPress={toggle}
+        style={styles.modalview}>
+        <View style={{height: 30}}>
+          <EllipseModal />
+        </View>
+      </Modal> */}
+    </>
   );
 };
 
@@ -186,5 +221,12 @@ const styles = StyleSheet.create({
     height: 400,
     alignSelf: 'center',
     //marginRight: 5,
+  },
+  modalview: {
+    justifyContent: 'flex-end',
+    margin: 0,
+  },
+  touchedStatus: {
+    backgroundColor: '#ffffff',
   },
 });

@@ -19,10 +19,13 @@ import Modal from 'react-native-modal';
 import StoryHighlight from '../component/StoryHighlight';
 import ProfilePost from '../component/ProfilePost';
 import ModalScreen from '../component/ModalScreen';
+import EllipseModal from '../component/EllipseModal';
+import HamburgerModal from '../component/HamburgerModal';
 
 const ProfileScreen = () => {
   const data = useSelector(state => state.post.data);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isburgerModalVisible, setIsburgerModalVisible] = useState(false);
   console.log('ProfileScreen', data);
 
   const toggle = () => {
@@ -34,6 +37,12 @@ const ProfileScreen = () => {
   //     <Text>{item.name}</Text>
   //   </View>;
   // };
+  const toggleburger = () => {
+    setIsburgerModalVisible(!isburgerModalVisible);
+  };
+  const onPressBurger = () => {
+    toggleburger();
+  };
   const onPressarrow = () => {
     toggle();
   };
@@ -58,7 +67,9 @@ const ProfileScreen = () => {
         </View>
         <View style={{flexDirection: 'row', right: 10}}>
           <Icons name="plus-square-o" size={22} style={styles.plusicon} />
-          <Ionicons name="menu" size={22} style={styles.menuicon} />
+          <TouchableOpacity onPress={onPressBurger}>
+            <Ionicons name="menu" size={22} style={styles.menuicon} />
+          </TouchableOpacity>
         </View>
       </View>
       {/* About Section */}
@@ -204,6 +215,13 @@ const ProfileScreen = () => {
           <ModalScreen />
         </Modal>
       </View>
+      <Modal
+        swipeDirection={['down']}
+        isVisible={isburgerModalVisible}
+        onBackdropPress={toggleburger}
+        style={styles.view}>
+        <HamburgerModal />
+      </Modal>
     </SafeAreaView>
   );
 };
