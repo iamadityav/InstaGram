@@ -159,9 +159,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
   },
-  post: {
-    // backgroundColor: '#eeeded',
-  },
   profilename: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -173,8 +170,6 @@ const styles = StyleSheet.create({
     height: 33,
     borderRadius: 53,
     backgroundColor: '#da5555',
-    // justifyContent: 'center',
-    // alignItems: 'center',
     marginLeft: 8,
   },
   coloredIcon: {
@@ -220,7 +215,6 @@ const styles = StyleSheet.create({
     width: '99.5%',
     height: 400,
     alignSelf: 'center',
-    //marginRight: 5,
   },
   modalview: {
     justifyContent: 'flex-end',

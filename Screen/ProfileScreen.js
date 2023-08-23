@@ -2,7 +2,6 @@ import {
   View,
   Image,
   Text,
-  FlatList,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
@@ -31,12 +30,6 @@ const ProfileScreen = () => {
   const toggle = () => {
     setIsModalVisible(!isModalVisible);
   };
-
-  // const renderChat = ({item}) => {
-  //   <View style={styles.highlightcard}>
-  //     <Text>{item.name}</Text>
-  //   </View>;
-  // };
   const toggleburger = () => {
     setIsburgerModalVisible(!isburgerModalVisible);
   };
@@ -176,14 +169,6 @@ const ProfileScreen = () => {
         }}>
         <StoryHighlight />
       </ScrollView>
-      {/* <View
-        style={{
-          backgroundColor: '#dfdfdf',
-          width: '100%',
-          height: 0.5,
-          top: 80,
-        }}
-      /> */}
       <View
         style={{
           height: 30,
@@ -256,10 +241,6 @@ const styles = StyleSheet.create({
     left: 8,
     marginTop: 20,
   },
-  // modalContent: {
-  //   justifyContent: 'flex-end',
-  //   margin: 0,
-  // },
   view: {
     justifyContent: 'flex-end',
     margin: 0,

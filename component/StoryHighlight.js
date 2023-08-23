@@ -1,17 +1,9 @@
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import {View, Image, ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
 const StoryHighlight = () => {
   const items = useSelector(state => state.post.data);
-  console.log('jsbjv', items);
 
   const renderChat = ({item, index}) => {
     return (

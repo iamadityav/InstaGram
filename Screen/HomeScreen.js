@@ -46,7 +46,6 @@ const HomeScreen = () => {
       <View>
         {/* Header and Icon */}
         <View style={styles.header}>
-          {/* <Text style={styles.headertext}>INSTAGRAM</Text> */}
           <Image
             source={require('../Data/images/Instagram-logo.png')}
             style={styles.headerimage}
@@ -125,7 +124,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     paddingTop: 10,
     borderRadius: 50,
-    //marginLeft: 8,
   },
   postContainer: {
     backgroundColor: '#ffffff',

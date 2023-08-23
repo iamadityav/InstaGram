@@ -1,4 +1,4 @@
-import {View, Image, Text, FlatList, StyleSheet} from 'react-native';
+import {View, Image, FlatList, StyleSheet} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
@@ -27,7 +27,6 @@ const ProfilePost = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    // Ensures items are displayed in a row
   },
 });
 
