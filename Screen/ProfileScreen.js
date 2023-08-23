@@ -18,6 +18,7 @@ import {useSelector} from 'react-redux';
 import Modal from 'react-native-modal';
 import StoryHighlight from '../component/StoryHighlight';
 import ProfilePost from '../component/ProfilePost';
+import ModalScreen from '../component/ModalScreen';
 
 const ProfileScreen = () => {
   const data = useSelector(state => state.post.data);
@@ -73,24 +74,30 @@ const ProfileScreen = () => {
         <View
           style={{
             flexDirection: 'row',
-            marginTop: 50,
+            marginTop: 20,
             justifyContent: 'space-between',
             right: 25,
-            alignItems: 'baseline',
+            alignItems: 'center',
           }}>
           {/* Post */}
           <View style={{right: 45}}>
-            <Text style={{fontWeight: '500', fontSize: 23}}>3</Text>
+            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 23}}>
+              3
+            </Text>
             <Text>Posts</Text>
           </View>
           {/* Followers */}
-          <View style={{right: 23}}>
-            <Text style={{fontWeight: '500', fontSize: 23}}>931</Text>
+          <View style={{right: 23, marginTop: 1.5}}>
+            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 23}}>
+              931
+            </Text>
             <Text>Followers</Text>
           </View>
           {/* Following */}
-          <View>
-            <Text style={{fontWeight: '500', fontSize: 23}}>805</Text>
+          <View style={{marginTop: 1.5}}>
+            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 23}}>
+              805
+            </Text>
             <Text>Following</Text>
           </View>
         </View>
@@ -106,7 +113,7 @@ const ProfileScreen = () => {
         style={{
           flexDirection: 'row',
           alignItems: 'center',
-          marginTop: 30,
+          marginTop: 20,
           justifyContent: 'space-between',
         }}>
         <View
@@ -157,13 +164,6 @@ const ProfileScreen = () => {
           flexDirection: 'row',
         }}>
         <StoryHighlight />
-        <StoryHighlight />
-        <StoryHighlight />
-        <StoryHighlight />
-        <StoryHighlight />
-        <StoryHighlight />
-        <StoryHighlight />
-        <StoryHighlight />
       </ScrollView>
       {/* <View
         style={{
@@ -196,9 +196,14 @@ const ProfileScreen = () => {
         <ProfilePost />
       </View>
       {/* Bottom Half Modal */}
-      <Modal isVisible={isModalVisible} onBackdropPress={toggle}>
-        <View style={styles.modalContent}></View>
-      </Modal>
+      <View style={styles.modalContent}>
+        <Modal
+          isVisible={isModalVisible}
+          onBackdropPress={toggle}
+          style={styles.view}>
+          <ModalScreen />
+        </Modal>
+      </View>
     </SafeAreaView>
   );
 };
@@ -233,7 +238,11 @@ const styles = StyleSheet.create({
     left: 8,
     marginTop: 20,
   },
-  modalContent: {
+  // modalContent: {
+  //   justifyContent: 'flex-end',
+  //   margin: 0,
+  // },
+  view: {
     justifyContent: 'flex-end',
     margin: 0,
   },

@@ -1,11 +1,30 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 import React from 'react';
+import {useSelector} from 'react-redux';
 
 const StoryHighlight = () => {
+  const items = useSelector(state => state.post.data);
+  console.log('jsbjv', items);
+
+  const renderChat = ({item, index}) => {
+    return (
+      <View key={index} style={styles.highlightcard}>
+        <Image source={item.highlight} style={styles.image} />
+      </View>
+    );
+  };
+
   return (
-    <View style={styles.highlightcard}>
-      <Text>jbs</Text>
-    </View>
+    <ScrollView horizontal={true}>
+      {items.map((item, index) => renderChat({item, index}))}
+    </ScrollView>
   );
 };
 
@@ -22,4 +41,20 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     top: 7,
   },
+  image: {
+    width: 85,
+    height: 85,
+    borderRadius: 55,
+    marginLeft: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
+
+{
+  /* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+  {item.map((data, index) =>
+    renderChat(data, index), // Call the renderChat function for each item
+  )}
+</ScrollView> */
+}
