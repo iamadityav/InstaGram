@@ -47,7 +47,7 @@ const HomeScreen = () => {
         {/* Header and Icon */}
         <View style={styles.header}>
           <Image
-            source={require('../Data/images/Instagram-logo.png')}
+            source={require('../Data/images/Instagram.png')}
             style={styles.headerimage}
           />
           <TouchableOpacity>
@@ -88,9 +88,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   headerimage: {
-    height: 30,
+    height: 35,
     width: 110,
     left: 10,
+    marginBottom: 2,
   },
   icon: {
     right: 8,

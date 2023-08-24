@@ -17,7 +17,6 @@ const PostSlice = createSlice({
     toggleTouch: (state, action) => {
       const touchid = state.data.findIndex(item => item.id == action.payload);
       state.data[touchid].touch = true;
-      console.log('state.data[touchid].touch', state.data[touchid].touch);
     },
     setLike: (state, action) => {
       const postIndex = state.data.findIndex(item => item.id == action.payload);
@@ -27,12 +26,10 @@ const PostSlice = createSlice({
           ? state.data[postIndex].likes++
           : state.data[postIndex].likes--;
       }
-      console.log('postindex', state.data[postIndex].isLiked);
     },
     setBookmark: (state, action) => {
       const postIndex = state.data.findIndex(item => item.id == action.payload);
       state.data[postIndex].isBookmarked = !state.data[postIndex].isBookmarked;
-      console.log('Index', state.data[postIndex].isBookmarked);
     },
   },
 });

@@ -229,7 +229,7 @@ const ProfileScreen = () => {
         }}
       />
       {/* Post in profile */}
-      <View style={{height: 320, backgroundColor: '#e4e4e4'}}>
+      <View style={{height: 500, backgroundColor: '#e4e4e4'}}>
         <ProfilePost />
       </View>
       {/* Bottom Half Modal */}
