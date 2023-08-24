@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  TextInput,
-  ScrollView,
-} from 'react-native';
+import {View, SafeAreaView, StyleSheet, TextInput} from 'react-native';
 import React from 'react';
 import ProfilePost from '../component/ProfilePost';
 import SearchPost from '../component/SearchPost';
@@ -32,7 +25,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: '#cccccc',
     borderRadius: 10,
-    // alignItems: 'center',
     justifyContent: 'center',
     paddingLeft: 10,
   },

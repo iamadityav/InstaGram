@@ -45,19 +45,4 @@ export const PostData = [
       isBookmarked: false,
     },
   },
-  //   {
-  //     id: 4,
-  //     post: {
-  //       postImage: require('../Data/images/PostImage4.jpg'),
-  //       likes: 523,
-  //       isLiked: false,
-  //       isBookmarked: false,
-  //     },
-  //     reel: {
-  //       video: require('../Data/Videos/reel2.mp4'),
-  //       likes: 0,
-  //       isLiked: false,
-  //       isBookmarked: false,
-  //     },
-  //   },
 ];

@@ -8,7 +8,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import {setLike} from '../redux/PostSlice';
 import {setBookmark} from '../redux/PostSlice';
 import {toggleTouch} from '../redux/PostSlice';
-import {SafeAreaView} from 'react-native';
 import Modal from 'react-native-modal';
 import EllipseModal from './EllipseModal';
 
@@ -57,11 +56,6 @@ const Post = () => {
                   </View>
                 </TouchableOpacity>
               </View>
-              {/* <Ionicons
-                name="ellipsis-vertical"
-                size={22}
-                style={styles.ellipseicon}
-              /> */}
               <TouchableOpacity onPress={openModal}>
                 <Ionicons
                   name="ellipsis-vertical"

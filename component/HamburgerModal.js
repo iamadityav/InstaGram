@@ -4,7 +4,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/FontAwesome5';
 import Octicons from 'react-native-vector-icons/Octicons';
 import {useNavigation} from '@react-navigation/native';
-import SavedPostScreen from '../Screen/SavedPostScreen';
 
 const HamburgerModal = ({toggleburger}) => {
   const navigation = useNavigation();

@@ -4,13 +4,11 @@ import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
 import Video from 'react-native-video';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useDispatch, useSelector} from 'react-redux';
-import {DummyData} from '../Data/Dummydata';
 import {setVideoLike} from '../redux/AddPostSlice';
 import {useNavigation} from '@react-navigation/native';
 
 const ReelScreen = () => {
   const reels = useSelector(state => state.video.data);
-  const posts = useSelector(state => state.post.data);
 
   const navigation = useNavigation();
 
@@ -42,16 +40,6 @@ const ReelScreen = () => {
               />
               <Text style={{color: 'white'}}>{item.post.likes}</Text>
             </TouchableOpacity>
-            {/* <TouchableOpacity onPress={() => onPressHandler(item.id)}>
-                  <Ionicons
-                    name={item.isLiked ? 'heart' : 'heart-outline'}
-                    size={25}
-                    style={[
-                      styles.icon,
-                      item.isLiked ? styles.coloredIcon : null,
-                    ]}
-                  />
-                </TouchableOpacity> */}
           </View>
           <Ionicons
             name="chatbubble-outline"

@@ -5,16 +5,13 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {setSelectedPost} from '../redux/PostSlice';
 import {useNavigation} from '@react-navigation/native';
-import PostScreen from '../Screen/PostScreen';
 
 const ProfilePost = () => {
   const navigation = useNavigation();
   const postData = useSelector(state => state.post.data);
-  const dispatch = useDispatch();
 
   const onPressHandler = item => {
     navigation.navigate('PostScreen');

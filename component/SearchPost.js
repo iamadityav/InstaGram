@@ -14,7 +14,6 @@ const ProfilePost = () => {
 
   return (
     <View style={styles.container}>
-      {/* {postData.map((item, index) => renderChat({item, index}))} */}
       <FlatList
         data={postData}
         renderItem={renderChat}

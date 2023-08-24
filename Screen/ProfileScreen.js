@@ -18,12 +18,9 @@ import Modal from 'react-native-modal';
 import StoryHighlight from '../component/StoryHighlight';
 import ProfilePost from '../component/ProfilePost';
 import ModalScreen from '../component/ModalScreen';
-import EllipseModal from '../component/EllipseModal';
 import HamburgerModal from '../component/HamburgerModal';
-import {useNavigation} from '@react-navigation/native';
 
 const ProfileScreen = () => {
-  const navigation = useNavigation();
   const data = useSelector(state => state.post.data);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isburgerModalVisible, setIsburgerModalVisible] = useState(false);
