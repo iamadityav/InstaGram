@@ -8,17 +8,13 @@ const AddPostSlice = createSlice({
   },
   reducers: {
     setVideoLike: (state, action) => {
-      const postIndex = state.data.findIndex(
-        item => item.id === action.payload,
-      );
+      const postIndex = state.data.findIndex(item => item.id == action.payload);
       state.data[postIndex].isLiked = !state.data[postIndex].isLiked;
-
-      if (state.data[postIndex].isLiked) {
-        state.data[postIndex].likes++;
-      } else {
-        state.data[postIndex].likes--;
+      {
+        state.data[postIndex].isLiked
+          ? state.data[postIndex].post.likes++
+          : state.data[postIndex].post.likes--;
       }
-      console.log('postindex', state.data[postIndex].isLiked);
     },
     setVideoBookmark: (state, action) => {
       const postIndex = state.data.findIndex(
