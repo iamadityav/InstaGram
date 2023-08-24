@@ -42,7 +42,7 @@ const Post = () => {
   const renderPost = ({item}) => {
     return (
       <>
-        <SafeAreaView style={styles.root}>
+        <View style={styles.root}>
           <View style={styles.post}>
             <View style={styles.profilename}>
               <View>
@@ -136,7 +136,7 @@ const Post = () => {
               top: 15,
             }}
           />
-        </SafeAreaView>
+        </View>
       </>
     );
   };
@@ -167,6 +167,9 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     marginTop: 20,
+  },
+  post: {
+    //flex: 1,
   },
   profilename: {
     flexDirection: 'row',

@@ -80,7 +80,9 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  statusroot: {},
+  statusroot: {
+    height: 100,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
