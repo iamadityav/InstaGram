@@ -19,6 +19,8 @@ import StoryHighlight from '../component/StoryHighlight';
 import ProfilePost from '../component/ProfilePost';
 import ModalScreen from '../component/ModalScreen';
 import HamburgerModal from '../component/HamburgerModal';
+import ProfileReelSection from '../component/ProfileReelSection';
+import TagPostSection from '../component/TagPostSection';
 
 const ProfileScreen = () => {
   const data = useSelector(state => state.post.data);
@@ -80,39 +82,20 @@ const ProfileScreen = () => {
           source={require('../Data/images/Aditya.jpeg')}
           style={styles.profileimage}
         />
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 20,
-            justifyContent: 'space-between',
-            right: 25,
-            alignItems: 'center',
-          }}>
+        <View style={styles.abourSectionContainer}>
           {/* Post */}
           <View style={{right: 45, marginTop: 2}}>
-            <Text
-              style={{
-                fontWeight: '500',
-                marginLeft: 9,
-                fontSize: 21,
-                marginTop: 1.5,
-              }}>
-              1
-            </Text>
+            <Text style={styles.postText}>1</Text>
             <Text>Posts</Text>
           </View>
           {/* Followers */}
           <View style={{right: 23, marginTop: 3}}>
-            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 21}}>
-              930
-            </Text>
+            <Text style={styles.followersText}>930</Text>
             <Text>Followers</Text>
           </View>
           {/* Following */}
           <View style={{marginTop: 3}}>
-            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 21}}>
-              804
-            </Text>
+            <Text style={styles.followingText}>804</Text>
             <Text>Following</Text>
           </View>
         </View>
@@ -124,44 +107,14 @@ const ProfileScreen = () => {
         <Text style={{left: 10}}>Bangalore 📍</Text>
       </View>
       {/* Buttons */}
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginTop: 20,
-          justifyContent: 'space-between',
-        }}>
-        <View
-          style={{
-            height: 30,
-            width: 130,
-            left: 10,
-            backgroundColor: '#cacaca',
-            alignItems: 'center',
-            borderRadius: 10,
-          }}>
+      <View style={styles.buttonContainer}>
+        <View style={styles.editProfileContainer}>
           <Text style={{top: 6}}>Edit Profile</Text>
         </View>
-        <View
-          style={{
-            height: 30,
-            width: 130,
-            right: 10,
-            backgroundColor: '#cacaca',
-            alignItems: 'center',
-            borderRadius: 10,
-          }}>
+        <View style={styles.shareProfileContainer}>
           <Text style={{top: 6}}>Share Profile</Text>
         </View>
-        <View
-          style={{
-            height: 30,
-            width: 50,
-            right: 30,
-            backgroundColor: '#cacaca',
-            alignItems: 'center',
-            borderRadius: 10,
-          }}>
+        <View style={styles.personAddOutlineContainer}>
           <Ionicons
             name="person-add-outline"
             size={18}
@@ -227,7 +180,10 @@ const ProfileScreen = () => {
       />
       {/* Post in profile */}
       <View style={{height: 500, backgroundColor: '#e4e4e4'}}>
-        <ProfilePost />
+        {tabNo === 1 && <ProfilePost />}
+        {tabNo === 2 && <ProfileReelSection />}
+        {tabNo === 3 && <TagPostSection />}
+        {/* <ProfilePost /> */}
       </View>
       {/* Bottom Half Modal */}
       <View style={styles.modalContent}>
@@ -283,8 +239,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     margin: 0,
   },
-
-  //post container
   postHeaderRootContainer: {
     height: 40,
     width: '100%',
@@ -292,7 +246,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   touchContainer: {
-    // backgroundColor: '#adadad',
     width: '33%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -309,5 +262,58 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 5,
+  },
+  abourSectionContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+    justifyContent: 'space-between',
+    right: 25,
+    alignItems: 'center',
+  },
+  postText: {
+    fontWeight: '500',
+    marginLeft: 9,
+    fontSize: 21,
+    marginTop: 1.5,
+  },
+  followersText: {
+    fontWeight: '500',
+    marginLeft: 9,
+    fontSize: 21,
+  },
+  followingText: {
+    fontWeight: '500',
+    marginLeft: 9,
+    fontSize: 21,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 20,
+    justifyContent: 'space-between',
+  },
+  editProfileContainer: {
+    height: 30,
+    width: 130,
+    left: 20,
+    backgroundColor: '#cacaca',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  shareProfileContainer: {
+    height: 30,
+    width: 130,
+    right: 10,
+    backgroundColor: '#cacaca',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  personAddOutlineContainer: {
+    height: 30,
+    width: 50,
+    right: 30,
+    backgroundColor: '#cacaca',
+    alignItems: 'center',
+    borderRadius: 10,
   },
 });

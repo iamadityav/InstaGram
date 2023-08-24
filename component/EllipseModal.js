@@ -1,6 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feathericons from 'react-native-vector-icons/Feather';
@@ -8,35 +7,11 @@ import Evilicons from 'react-native-vector-icons/EvilIcons';
 
 const EllipseModal = () => {
   return (
-    <View style={{height: 500, backgroundColor: '#ffffff'}}>
-      <View
-        style={{
-          backgroundColor: '#000000',
-          width: 40,
-          height: 6,
-          marginTop: 10,
-          alignSelf: 'center',
-          borderRadius: 10,
-        }}
-      />
+    <View style={styles.root}>
+      <View style={styles.line} />
       {/* Buttons */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginTop: 20,
-        }}>
-        <View
-          style={{
-            height: 60,
-            width: 150,
-            marginLeft: 20,
-            borderRadius: 20,
-            backgroundColor: '#eaeaea',
-            justifyContent: 'center',
-            alignSelf: 'center',
-            alignItems: 'center',
-          }}>
+      <View style={styles.buttonContainer}>
+        <View style={styles.buttonInViewContainer}>
           <View style={{marginTop: 5}}>
             <Ionicons
               name="bookmark-outline"
@@ -165,5 +140,31 @@ const EllipseModal = () => {
 export default EllipseModal;
 
 const styles = StyleSheet.create({
-  icon: {},
+  root: {
+    height: 500,
+    backgroundColor: '#ffffff',
+  },
+  line: {
+    backgroundColor: '#000000',
+    width: 40,
+    height: 6,
+    marginTop: 10,
+    alignSelf: 'center',
+    borderRadius: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  buttonInViewContainer: {
+    height: 60,
+    width: 150,
+    marginLeft: 20,
+    borderRadius: 20,
+    backgroundColor: '#eaeaea',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
 });

@@ -16,7 +16,6 @@ const Post = () => {
   const [isModalVisible, setModalVisble] = useState(false);
   const postData = useSelector(state => state.post.data);
   const dispatch = useDispatch();
-  console.log('data', postData);
 
   const onPressHandler = postId => {
     dispatch(setLike(postId));

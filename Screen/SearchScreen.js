@@ -1,6 +1,5 @@
 import {View, SafeAreaView, StyleSheet, TextInput} from 'react-native';
 import React from 'react';
-import ProfilePost from '../component/ProfilePost';
 import SearchPost from '../component/SearchPost';
 
 const SearchScreen = () => {

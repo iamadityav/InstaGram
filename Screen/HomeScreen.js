@@ -18,7 +18,6 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
 
   const toggle = id => {
-    console.log('id', id);
     dispatch(toggleTouch(id));
   };
 
