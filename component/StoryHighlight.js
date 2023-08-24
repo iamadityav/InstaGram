@@ -42,11 +42,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-{
-  /* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-  {item.map((data, index) =>
-    renderChat(data, index), // Call the renderChat function for each item
-  )}
-</ScrollView> */
-}
