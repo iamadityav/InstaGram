@@ -29,6 +29,7 @@ const ReelScreen = () => {
           style={styles.backgroundVideo}
           controls={true}
           muted={true}
+          repeat={true}
         />
         <View style={{flexDirection: 'row', height: 60}}>
           <View>
@@ -52,11 +53,18 @@ const ReelScreen = () => {
               name="bookmark-outline"
               size={24}
               color="#ffffff"
-              style={{left: 30}}
+              style={{left: 40}}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={{}}>
+            <Ionicons
+              name="ellipsis-vertical"
+              size={22}
+              style={{color: '#ffffff', left: 310}}
             />
           </TouchableOpacity>
           <View style={styles.textcontainer}>
-            <Text style={styles.icon}>Aditya</Text>
+            <Text style={styles.text}>Aditya</Text>
           </View>
         </View>
       </View>
@@ -113,6 +121,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#ffffff',
+    right: 12,
+    fontSize: 17,
   },
   textcontainer: {
     marginLeft: 50,
