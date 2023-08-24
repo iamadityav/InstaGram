@@ -6,10 +6,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useDispatch, useSelector} from 'react-redux';
 import {DummyData} from '../Data/Dummydata';
 import {setVideoLike} from '../redux/AddPostSlice';
+import {useNavigation} from '@react-navigation/native';
 
 const ReelScreen = () => {
   const reels = useSelector(state => state.video.data);
   const posts = useSelector(state => state.post.data);
+
+  const navigation = useNavigation();
+
+  const onPressProfileHandler = () => {
+    navigation.navigate('ProfileScreen');
+  };
 
   const dispatch = useDispatch();
   const onPressHandler = postId => {
@@ -74,15 +81,17 @@ const ReelScreen = () => {
         <Text style={styles.headerText}>Reels</Text>
         <Ionicons name="camera-outline" size={35} style={styles.icon} />
       </View>
-      <View style={styles.profileimagecontainer}>
-        <Image
-          source={require('../Data/images/Aditya.jpeg')}
-          style={styles.profileimage}
-        />
-        <View style={styles.textcontainer2}>
-          <Text style={styles.icon}>Aditya</Text>
+      <TouchableOpacity onPress={onPressProfileHandler}>
+        <View style={styles.profileimagecontainer}>
+          <Image
+            source={require('../Data/images/Aditya.jpeg')}
+            style={styles.profileimage}
+          />
+          <View style={styles.textcontainer2}>
+            <Text style={styles.icon}>Aditya</Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
       <FlatList data={reels} renderItem={renderReels} horizontal={false} />
     </SafeAreaView>
   );
