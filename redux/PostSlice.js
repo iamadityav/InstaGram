@@ -5,7 +5,6 @@ const PostSlice = createSlice({
   name: 'post',
   initialState: {
     data: DummyData,
-    selectedItem: null,
   },
   reducers: {
     setSelectedPost: (state, action) => {

@@ -13,7 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SavedPostScreen from './Screen/SavedPostScreen';
-
+import PostScreen from './Screen/PostScreen';
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
@@ -92,6 +92,11 @@ const App = () => {
             options={{headerShown: false}}
           />
           <Stack.Screen name="SavedPostScreen" component={SavedPostScreen} />
+          <Stack.Screen
+            name="PostScreen"
+            component={PostScreen}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

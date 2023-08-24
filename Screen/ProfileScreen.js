@@ -93,8 +93,14 @@ const ProfileScreen = () => {
           }}>
           {/* Post */}
           <View style={{right: 45, marginTop: 2}}>
-            <Text style={{fontWeight: '500', marginLeft: 9, fontSize: 22}}>
-              3
+            <Text
+              style={{
+                fontWeight: '500',
+                marginLeft: 9,
+                fontSize: 21,
+                marginTop: 1.5,
+              }}>
+              1
             </Text>
             <Text>Posts</Text>
           </View>

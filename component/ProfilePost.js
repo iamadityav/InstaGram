@@ -8,14 +8,16 @@ import {
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {setSelectedPost} from '../redux/PostSlice';
+import {useNavigation} from '@react-navigation/native';
+import PostScreen from '../Screen/PostScreen';
 
 const ProfilePost = () => {
+  const navigation = useNavigation();
   const postData = useSelector(state => state.post.data);
   const dispatch = useDispatch();
 
   const onPressHandler = item => {
-    // dispatch({type: 'SHOW_POST', payload: item});
-    dispatch(setSelectedPost(item));
+    navigation.navigate('PostScreen');
   };
   const renderChat = ({item}) => (
     <View style={{padding: 0.5}}>
