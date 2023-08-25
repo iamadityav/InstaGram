@@ -17,7 +17,6 @@ const Post = () => {
   const [isCommentModalVisible, setCommentModalVisble] = useState(false);
   const postData = useSelector(state => state.post.data);
   const dispatch = useDispatch();
-  console.log('data', postData);
 
   const onPressHandler = postId => {
     dispatch(setLike(postId));
@@ -28,7 +27,6 @@ const Post = () => {
   };
 
   const toggletouch = id => {
-    console.log('id', id);
     dispatch(toggleTouch(id));
   };
 

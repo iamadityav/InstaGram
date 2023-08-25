@@ -34,7 +34,6 @@ const PostSlice = createSlice({
     setProfilePic: (state, action) => {
       const Image = action.payload;
       state.data[0].Image = {uri: Image};
-      console.log('PostSLice, SetProfilePic', Image);
     },
   },
 });
