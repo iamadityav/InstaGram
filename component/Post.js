@@ -10,9 +10,11 @@ import {setBookmark} from '../redux/PostSlice';
 import {toggleTouch} from '../redux/PostSlice';
 import Modal from 'react-native-modal';
 import EllipseModal from './EllipseModal';
+import CommentModal from './CommentModal';
 
 const Post = () => {
   const [isModalVisible, setModalVisble] = useState(false);
+  const [isCommentModalVisible, setCommentModalVisble] = useState(false);
   const postData = useSelector(state => state.post.data);
   const dispatch = useDispatch();
   console.log('data', postData);
@@ -36,6 +38,14 @@ const Post = () => {
 
   const openModal = () => {
     toggleburger();
+  };
+
+  const toggleComment = () => {
+    setCommentModalVisble(!isCommentModalVisible);
+  };
+
+  const openCommentModal = () => {
+    toggleComment();
   };
 
   const renderPost = ({item}) => {
@@ -84,17 +94,19 @@ const Post = () => {
                     ]}
                   />
                 </TouchableOpacity>
-                <Ionicons
-                  name="chatbubble-outline"
-                  size={21}
-                  style={{
-                    ...styles.icon,
-                    transform: [{rotateY: '180deg'}],
-                    marginLeft: 5,
-                    top: 1,
-                    left: 8,
-                  }}
-                />
+                <TouchableOpacity onPress={openCommentModal}>
+                  <Ionicons
+                    name="chatbubble-outline"
+                    size={21}
+                    style={{
+                      ...styles.icon,
+                      transform: [{rotateY: '180deg'}],
+                      marginLeft: 5,
+                      top: 1,
+                      left: 8,
+                    }}
+                  />
+                </TouchableOpacity>
                 <Icons
                   name="send"
                   size={20}
@@ -150,6 +162,14 @@ const Post = () => {
         style={styles.modalview}
         testID={'modal'}>
         <EllipseModal />
+      </Modal>
+      <Modal
+        swipeDirection={['down']}
+        isVisible={isCommentModalVisible}
+        onBackdropPress={toggleComment}
+        style={styles.modalview}
+        testID={'modal'}>
+        <CommentModal />
       </Modal>
     </>
   );
