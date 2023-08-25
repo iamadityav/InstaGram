@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import store from './redux/Store';
 import HomeScreen from './Screen/HomeScreen';
 import SearchScreen from './Screen/SearchScreen';
@@ -14,11 +14,14 @@ import {Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SavedPostScreen from './Screen/SavedPostScreen';
 import PostScreen from './Screen/PostScreen';
+import {DummyData} from './Data/Dummydata';
+
 const App = () => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
 
   const BottomScreenNavigator = () => {
+    const item = useSelector(state => state.post.data);
     return (
       <Tab.Navigator
         screenOptions={() => ({
@@ -72,7 +75,7 @@ const App = () => {
             headerShown: false,
             tabBarIcon: () => (
               <Image
-                source={require('./Data/images/Aditya.jpeg')}
+                source={item[0].Image}
                 style={{height: 30, width: 30, borderRadius: 30}}
               />
             ),
