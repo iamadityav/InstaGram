@@ -31,10 +31,21 @@ const PostSlice = createSlice({
       const postIndex = state.data.findIndex(item => item.id == action.payload);
       state.data[postIndex].isBookmarked = !state.data[postIndex].isBookmarked;
     },
+    setProfilePic: (state, action) => {
+      const Image = action.payload;
+      state.data[0].Image = {uri: Image};
+      console.log('PostSLice, SetProfilePic', Image);
+    },
   },
 });
 
-export const {AddPost, toggleTouch, setLike, setBookmark, setSelectedPost} =
-  PostSlice.actions;
+export const {
+  AddPost,
+  toggleTouch,
+  setLike,
+  setBookmark,
+  setSelectedPost,
+  setProfilePic,
+} = PostSlice.actions;
 
 export default PostSlice.reducer;

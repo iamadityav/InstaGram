@@ -8,12 +8,14 @@ import {
 } from 'react-native';
 import {React, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import ImagePicker from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import OctIcon from 'react-native-vector-icons/Octicons';
 import NewIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Modal from 'react-native-modal';
 import StoryHighlight from '../component/StoryHighlight';
 import ProfilePost from '../component/ProfilePost';
@@ -21,17 +23,23 @@ import ModalScreen from '../component/ModalScreen';
 import HamburgerModal from '../component/HamburgerModal';
 import ProfileReelSection from '../component/ProfileReelSection';
 import TagPostSection from '../component/TagPostSection';
+import {setProfilePic} from '../redux/PostSlice';
 
 const ProfileScreen = () => {
+  const image = require('../Data/images/Aditya.jpeg');
   const data = useSelector(state => state.post.data);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isburgerModalVisible, setIsburgerModalVisible] = useState(false);
   const [tabNo, setTabno] = useState(1);
+  const [selectedImage, setSelecetedImage] = useState(null);
+  const [profilePic, changedProfilePic] = useState(false);
 
   const TabRenderHandler = tabNo => {
     setTabno(tabNo);
   };
   console.log('ProfileScreen', data);
+
+  const dispatch = useDispatch();
 
   const toggle = () => {
     setIsModalVisible(!isModalVisible);
@@ -44,6 +52,20 @@ const ProfileScreen = () => {
   };
   const onPressarrow = () => {
     toggle();
+  };
+
+  const openImageLibrary = async () => {
+    let options = {
+      storageOptions: {
+        path: 'image',
+      },
+    };
+    await launchImageLibrary(options, response => {
+      setSelecetedImage(response.assets[0].uri);
+      dispatch(setProfilePic(response.assets[0].uri));
+      changedProfilePic(true);
+      console.log(response.assets[0].uri);
+    });
   };
 
   return (
@@ -78,10 +100,12 @@ const ProfileScreen = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
         }}>
-        <Image
-          source={require('../Data/images/Aditya.jpeg')}
-          style={styles.profileimage}
-        />
+        <TouchableOpacity onPress={openImageLibrary}>
+          <Image
+            source={profilePic ? {uri: selectedImage} : image}
+            style={styles.profileimage}
+          />
+        </TouchableOpacity>
         <View style={styles.abourSectionContainer}>
           {/* Post */}
           <View style={{right: 45, marginTop: 2}}>
@@ -295,7 +319,7 @@ const styles = StyleSheet.create({
   editProfileContainer: {
     height: 30,
     width: 130,
-    left: 20,
+    left: 31,
     backgroundColor: '#cacaca',
     alignItems: 'center',
     borderRadius: 10,
@@ -303,7 +327,6 @@ const styles = StyleSheet.create({
   shareProfileContainer: {
     height: 30,
     width: 130,
-    right: 10,
     backgroundColor: '#cacaca',
     alignItems: 'center',
     borderRadius: 10,

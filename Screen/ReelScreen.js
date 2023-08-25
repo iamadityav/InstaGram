@@ -3,6 +3,8 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
 import Video from 'react-native-video';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import Feather from 'react-native-vector-icons/Feather';
 import {useDispatch, useSelector} from 'react-redux';
 import {setVideoLike} from '../redux/AddPostSlice';
 import {useNavigation} from '@react-navigation/native';
@@ -31,40 +33,86 @@ const ReelScreen = () => {
           muted={true}
           repeat={true}
         />
-        <View style={{flexDirection: 'row', height: 60}}>
-          <View>
-            <TouchableOpacity onPress={() => onPressHandler(item.id)}>
+
+        <View style={{position: 'absolute', bottom: 55, right: 15}}>
+          <TouchableOpacity onPress={() => onPressHandler(item.id)}>
+            <View style={{marginBottom: 30}}>
               <Ionicons
                 name={item.isLiked ? 'heart' : 'heart-outline'}
-                size={25}
+                size={26}
                 style={[styles.icon, item.isLiked ? styles.coloredIcon : null]}
               />
-              <Text style={{color: 'white'}}>{item.post.likes}</Text>
+              <Text style={{color: 'white', marginTop: 5}}>
+                {item.post.likes}k
+              </Text>
+            </View>
+            <View style={{marginBottom: 30}}>
+              <EvilIcons name="comment" size={25} style={{color: 'white'}} />
+              <Text style={{color: 'white', marginTop: 5}}>134k</Text>
+            </View>
+            <View style={{marginBottom: 10}}>
+              <Feather name="send" size={22} style={{color: 'white'}} />
+              <Text style={{color: 'white', marginTop: 5}}>242k</Text>
+            </View>
+            <View>
+              <TouchableOpacity onPress={{}}>
+                <Ionicons
+                  name="ellipsis-vertical"
+                  size={22}
+                  style={{color: '#ffffff', top: 15}}
+                />
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={{position: 'absolute', bottom: 50, right: 0, left: 0}}>
+          <View>
+            <TouchableOpacity onPress={onPressProfileHandler}>
+              <View style={styles.profileimagecontainer}>
+                <Image
+                  source={require('../Data/images/Aditya.jpeg')}
+                  style={styles.profileimage}
+                />
+                <View style={styles.textcontainer2}>
+                  <Text style={styles.icon}>Aditya</Text>
+                </View>
+              </View>
             </TouchableOpacity>
+            <View style={{marginLeft: 10}}>
+              <Text style={{color: 'white', fontSize: 20}}>
+                Welcome To InstaKilo App
+              </Text>
+              <Text style={{color: 'white', fontSize: 20}}>
+                Best Anime 4k Reels
+              </Text>
+            </View>
           </View>
-          <Ionicons
-            name="chatbubble-outline"
-            size={24}
-            color="#ffffff"
-            style={{left: 15}}
-          />
-          <TouchableOpacity>
-            <Ionicons
-              name="bookmark-outline"
-              size={24}
-              color="#ffffff"
-              style={{left: 40}}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={{}}>
-            <Ionicons
-              name="ellipsis-vertical"
-              size={22}
-              style={{color: '#ffffff', left: 310}}
-            />
-          </TouchableOpacity>
-          <View style={styles.textcontainer}>
-            <Text style={styles.text}>Aditya</Text>
+        </View>
+        <View style={{position: 'absolute'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginTop: 10,
+            }}>
+            <View>
+              <Text
+                style={{
+                  color: '#ffffff',
+                  fontSize: 25,
+                  marginTop: 2,
+                  fontWeight: '600',
+                  left: 20,
+                }}>
+                Reels
+              </Text>
+            </View>
+            <View style={{left: 310}}>
+              <Ionicons
+                name="camera-outline"
+                size={35}
+                style={{fontSize: 35, color: 'white'}}
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -73,21 +121,6 @@ const ReelScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
-        <Text style={styles.headerText}>Reels</Text>
-        <Ionicons name="camera-outline" size={35} style={styles.icon} />
-      </View>
-      <TouchableOpacity onPress={onPressProfileHandler}>
-        <View style={styles.profileimagecontainer}>
-          <Image
-            source={require('../Data/images/Aditya.jpeg')}
-            style={styles.profileimage}
-          />
-          <View style={styles.textcontainer2}>
-            <Text style={styles.icon}>Aditya</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
       <FlatList data={reels} renderItem={renderReels} horizontal={false} />
     </SafeAreaView>
   );
@@ -97,6 +130,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000000',
+    //position: 'absolute',
   },
   backgroundVideo: {
     top: 0,
@@ -104,7 +138,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     height: 800,
-    width: '100%',
+    width: 450,
   },
   header: {
     flexDirection: 'row',
@@ -117,7 +151,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: '#ffffff',
-    marginRight: 15,
+    fontSize: 23,
   },
   text: {
     color: '#ffffff',
@@ -128,8 +162,9 @@ const styles = StyleSheet.create({
     marginLeft: 50,
   },
   textcontainer2: {
-    marginLeft: 20,
-    marginTop: 20,
+    marginLeft: 10,
+    top: 22,
+    // marginTop: 10,
   },
   profileimage: {
     height: 40,

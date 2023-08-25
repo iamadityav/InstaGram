@@ -1,8 +1,18 @@
+import Aditya from '../Data/images/Aditya.jpeg';
+import Shubham from '../Data/images/Shubham.png';
+import Amlan from '../Data/images/Amlan.png';
+import Prakhar from '../Data/images/Prakhar.png';
+import Adyasar from '../Data/images/Adyasar.png';
+import Rishab from '../Data/images/Rishab.png';
+import Pratiksha from '../Data/images/Pratiskha.png';
+import Preeti from '../Data/images/Preeti.png';
+import Gauri from '../Data/images/Gauri.png';
+
 export const DummyData = [
   {
     id: 1,
     name: 'Aditya',
-    Image: require('../Data/images/Aditya.jpeg'),
+    Image: Aditya,
     Post: require('../Data/images/Image1.jpg'),
     highlight: require('../Data/images/Highlight1.jpg'),
     likes: 256,

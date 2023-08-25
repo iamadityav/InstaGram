@@ -21,7 +21,7 @@ const ProfilePost = () => {
         style={styles.backgroundVideo}
         controls={true}
         muted={true}
-        repeat={false}
+        repeat={true}
       />
     </View>
   );
