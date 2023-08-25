@@ -8,13 +8,25 @@ const AddPostScreen = () => {
   const onPressHandler = () => {
     let options = {
       storageOptions: {
-        path: 'image',
+        skipBackup: true,
+        path: 'images',
       },
     };
-    launchImageLibrary(options, response => {
-      console.log(response);
+    launchCamera(options, res => {
+      console.log('Response = ', res);
+      if (res.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (res.error) {
+        console.log('ImagePicker Error: ', res.error);
+      } else if (res.customButton) {
+        console.log('User tapped custom button: ', res.customButton);
+        alert(res.customButton);
+      } else {
+        console.log('response', JSON.stringify(res));
+      }
     });
   };
+
   return (
     <SafeAreaView>
       <Button title="Open Camera" onPress={onPressHandler} />
