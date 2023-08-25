@@ -37,7 +37,6 @@ const ProfileScreen = () => {
   const TabRenderHandler = tabNo => {
     setTabno(tabNo);
   };
-  console.log('ProfileScreen', data);
 
   const dispatch = useDispatch();
 
@@ -64,7 +63,6 @@ const ProfileScreen = () => {
       setSelecetedImage(response.assets[0].uri);
       dispatch(setProfilePic(response.assets[0].uri));
       changedProfilePic(true);
-      console.log(response.assets[0].uri);
     });
   };
 

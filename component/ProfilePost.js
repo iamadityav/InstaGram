@@ -45,8 +45,3 @@ const styles = StyleSheet.create({
 });
 
 export default ProfilePost;
-
-{
-  /* {console.log('Post Profile', item.Image)}
-    <Image source={item.Post} style={{ height: 150, width: 130 }} /> */
-}

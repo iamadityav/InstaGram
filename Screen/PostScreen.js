@@ -26,7 +26,6 @@ const Post = () => {
   };
 
   const toggletouch = id => {
-    console.log('id', id);
     dispatch(toggleTouch(id));
   };
 

@@ -47,10 +47,7 @@ const ModalScreen = () => {
           marginTop: 20,
           borderRadius: 20,
         }}>
-        <TouchableOpacity
-          onPress={() => {
-            console.log('AddAccount');
-          }}>
+        <TouchableOpacity onPress={() => {}}>
           <Text style={{color: '#ffffff', fontWeight: '700'}}>Add Account</Text>
         </TouchableOpacity>
       </View>

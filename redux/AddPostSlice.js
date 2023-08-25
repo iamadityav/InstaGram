@@ -21,7 +21,6 @@ const AddPostSlice = createSlice({
         item => item.id === action.payload,
       );
       state.data[postIndex].isBookmarked = !state.data[postIndex].isBookmarked;
-      console.log('Index', state.data[postIndex].isBookmarked);
     },
   },
 });
