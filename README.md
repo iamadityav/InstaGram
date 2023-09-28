@@ -1,3 +1,10 @@
+
+![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-29 at 10 19 03](https://github.com/iamadityav/InstaGram/assets/70755876/69b0da07-c820-4ed0-a632-5b7e443a90c9)
+
+
+
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
